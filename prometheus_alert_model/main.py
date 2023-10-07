@@ -5,7 +5,7 @@ from datetime import datetime
 from re import Pattern, compile
 from typing import Dict, List, Optional, Sequence, Union
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, validator, ConfigDict
 from typing_extensions import Literal
 
 from .utils import intersect
@@ -37,9 +37,10 @@ class Alert(BaseModel):
         ),
     )
 
-    class Config:
-        extra = "allow"
-        allow_population_by_field_name = True
+    model_config = ConfigDict(
+        extra="allow",
+        populate_by_name=True,
+    )
 
 
 class AlertGroup(BaseModel):
@@ -71,17 +72,18 @@ class AlertGroup(BaseModel):
 
         return v
 
-    class Config:
-        extra = "allow"
-        allow_population_by_field_name = True
+    model_config = ConfigDict(
+        extra="allow",
+        populate_by_name=True,
+    )
 
     # --------------------------------------------------------------------------
 
     def update_specific_elements(
-        self,
-        targets: Union[
-            Sequence[Literal["annotations", "labels"]], Literal["annotations", "labels"]
-        ] = ["annotations", "labels"],
+            self,
+            targets: Union[
+                Sequence[Literal["annotations", "labels"]], Literal["annotations", "labels"]
+            ] = ["annotations", "labels"],
     ) -> None:
         """Updates specific labels and annotations."""
 
@@ -92,7 +94,7 @@ class AlertGroup(BaseModel):
                 alert.__dict__[f"specific_{target}"] = {
                     name: alert.__dict__[target][name]
                     for name in set(alert.__dict__[target])
-                    - set(self.__dict__[f"common_{target}"])
+                                - set(self.__dict__[f"common_{target}"])
                 }
 
     def update_specific_annotations(self) -> None:
@@ -116,10 +118,10 @@ class AlertGroup(BaseModel):
     # --------------------------------------------------------------------------
 
     def update_common_elements(
-        self,
-        targets: Union[
-            Sequence[Literal["annotations", "labels"]], Literal["annotations", "labels"]
-        ] = ["annotations", "labels"],
+            self,
+            targets: Union[
+                Sequence[Literal["annotations", "labels"]], Literal["annotations", "labels"]
+            ] = ["annotations", "labels"],
     ) -> None:
         """Updates common annotations and labels.
 
@@ -146,9 +148,9 @@ class AlertGroup(BaseModel):
     # --------------------------------------------------------------------------
 
     def remove(
-        self,
-        annotations: Optional[Union[List[str], str]] = None,
-        labels: Optional[Union[List[str], str]] = None,
+            self,
+            annotations: Optional[Union[List[str], str]] = None,
+            labels: Optional[Union[List[str], str]] = None,
     ) -> None:
         """Removes annotations and labels by name.
 
@@ -179,9 +181,9 @@ class AlertGroup(BaseModel):
     # --------------------------------------------------------------------------
 
     def remove_re(
-        self,
-        annotations: Optional[Union[List[Union[Pattern, str]], Pattern, str]] = None,
-        labels: Optional[Union[List[Union[Pattern, str]], Pattern, str]] = None,
+            self,
+            annotations: Optional[Union[List[Union[Pattern, str]], Pattern, str]] = None,
+            labels: Optional[Union[List[Union[Pattern, str]], Pattern, str]] = None,
     ) -> None:
         """Removes annotations and labels by matching names with regex.
 
@@ -237,9 +239,9 @@ class AlertGroup(BaseModel):
     # --------------------------------------------------------------------------
 
     def add(
-        self,
-        annotations: Optional[Dict[str, str]] = None,
-        labels: Optional[Dict[str, str]] = None,
+            self,
+            annotations: Optional[Dict[str, str]] = None,
+            labels: Optional[Dict[str, str]] = None,
     ) -> None:
         """Adds annotations and labels but skips existing elements.
 
@@ -280,9 +282,9 @@ class AlertGroup(BaseModel):
     # --------------------------------------------------------------------------
 
     def override(
-        self,
-        annotations: Optional[Dict[str, str]] = None,
-        labels: Optional[Dict[str, str]] = None,
+            self,
+            annotations: Optional[Dict[str, str]] = None,
+            labels: Optional[Dict[str, str]] = None,
     ) -> None:
         """Adds annotations and labels and overrides existing elements.
 
@@ -313,9 +315,9 @@ class AlertGroup(BaseModel):
     # --------------------------------------------------------------------------
 
     def add_prefix(
-        self,
-        annotations: Optional[Dict[str, str]] = None,
-        labels: Optional[Dict[str, str]] = None,
+            self,
+            annotations: Optional[Dict[str, str]] = None,
+            labels: Optional[Dict[str, str]] = None,
     ) -> None:
         """Adds prefix to annotations and labels.
 
@@ -340,11 +342,11 @@ class AlertGroup(BaseModel):
             for target, prefixes_to_add in targets.items():
                 for name, prefix in prefixes_to_add.items():
                     self.__dict__[f"common_{target}"][name] = (
-                        prefix + self.__dict__[f"common_{target}"][name]
+                            prefix + self.__dict__[f"common_{target}"][name]
                     )
                     for alert in self.alerts:
                         alert.__dict__[target][name] = (
-                            prefix + alert.__dict__[target][name]
+                                prefix + alert.__dict__[target][name]
                         )
 
             self.update_specific_elements(list(targets.keys()))

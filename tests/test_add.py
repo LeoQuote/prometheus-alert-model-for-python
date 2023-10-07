@@ -151,4 +151,4 @@ def test_add_none_none(helpers, data_path):
 
     alert_group.add()
 
-    assert alert_group.dict() == AlertGroup(**payload)
+    assert alert_group.model_dump() == AlertGroup(**payload).model_dump()

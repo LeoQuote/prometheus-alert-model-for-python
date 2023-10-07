@@ -55,7 +55,7 @@ def test_create_alert_by_name(helpers):
 
 
 def test_create_alert_construct(helpers):
-    alert = Alert.construct(
+    alert = Alert.model_construct(
         fingerprint="x",
         status="x",
         starts_at=datetime(2020, 11, 3, 17, 51, 36, 149255, tzinfo=timezone.utc),
