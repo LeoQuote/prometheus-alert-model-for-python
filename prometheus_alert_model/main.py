@@ -5,7 +5,7 @@ from datetime import datetime
 from re import Pattern, compile
 from typing import Dict, List, Optional, Sequence, Union
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, ConfigDict, Field, validator
 from typing_extensions import Literal
 
 from .utils import intersect
@@ -37,9 +37,10 @@ class Alert(BaseModel):
         ),
     )
 
-    class Config:
-        extra = "allow"
-        allow_population_by_field_name = True
+    model_config = ConfigDict(
+        extra="allow",
+        populate_by_name=True,
+    )
 
 
 class AlertGroup(BaseModel):
@@ -71,9 +72,10 @@ class AlertGroup(BaseModel):
 
         return v
 
-    class Config:
-        extra = "allow"
-        allow_population_by_field_name = True
+    model_config = ConfigDict(
+        extra="allow",
+        populate_by_name=True,
+    )
 
     # --------------------------------------------------------------------------
 
@@ -209,7 +211,6 @@ class AlertGroup(BaseModel):
 
         if targets:
             for target, target_value in targets.items():
-
                 patterns: List[Pattern]
                 if isinstance(target_value, str):
                     patterns = [compile(target_value)]

@@ -15,7 +15,7 @@ def test_remove_nothing(helpers, data_path):
 
     alert_group.remove()
 
-    assert alert_group.dict() == AlertGroup(**payload)
+    assert alert_group.model_dump() == AlertGroup(**payload).model_dump()
 
 
 def test_remove_labels(helpers, data_path):
