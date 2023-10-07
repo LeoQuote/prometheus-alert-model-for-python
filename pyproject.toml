@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "prometheus-alert-model"
+name = "prometheus-alert-model-leo"
 version = "1.0.0"
 description = "Pydantic model of the Prometheus Alertmanager alert payload"
 authors = ["Tim Schwenke <tim.and.trallnag+code@gmail.com>"]
