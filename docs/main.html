@@ -394,8 +394,51 @@ class AlertGroup(BaseModel):
 <span>(</span><span>**data: Any)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p></div>
+<div class="desc"><p>Usage docs: <a href="https://docs.pydantic.dev/2.4/concepts/models/">https://docs.pydantic.dev/2.4/concepts/models/</a></p>
+<p>A base class for creating Pydantic models.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>__class_vars__</code></strong></dt>
+<dd>The names of classvars defined on the model.</dd>
+<dt><strong><code>__private_attributes__</code></strong></dt>
+<dd>Metadata about the private attributes of the model.</dd>
+<dt><strong><code>__signature__</code></strong></dt>
+<dd>The signature for instantiating the model.</dd>
+<dt><strong><code>__pydantic_complete__</code></strong></dt>
+<dd>Whether model building is completed, or if there are still undefined fields.</dd>
+<dt><strong><code>__pydantic_core_schema__</code></strong></dt>
+<dd>The pydantic-core schema used to build the SchemaValidator and SchemaSerializer.</dd>
+<dt><strong><code>__pydantic_custom_init__</code></strong></dt>
+<dd>Whether the model has a custom <code>__init__</code> function.</dd>
+<dt><strong><code>__pydantic_decorators__</code></strong></dt>
+<dd>Metadata containing the decorators defined on the model.
+This replaces <code>Model.__validators__</code> and <code>Model.__root_validators__</code> from Pydantic V1.</dd>
+<dt><strong><code>__pydantic_generic_metadata__</code></strong></dt>
+<dd>Metadata for generic models; contains data used for a similar purpose to
+<strong>args</strong>, <strong>origin</strong>, <strong>parameters</strong> in typing-module generics. May eventually be replaced by these.</dd>
+<dt><strong><code>__pydantic_parent_namespace__</code></strong></dt>
+<dd>Parent namespace of the model, used for automatic rebuilding of models.</dd>
+<dt><strong><code>__pydantic_post_init__</code></strong></dt>
+<dd>The name of the post-init method for the model, if defined.</dd>
+<dt><strong><code>__pydantic_root_model__</code></strong></dt>
+<dd>Whether the model is a <code>RootModel</code>.</dd>
+<dt><strong><code>__pydantic_serializer__</code></strong></dt>
+<dd>The pydantic-core SchemaSerializer used to dump instances of the model.</dd>
+<dt><strong><code>__pydantic_validator__</code></strong></dt>
+<dd>The pydantic-core SchemaValidator used to validate instances of the model.</dd>
+<dt><strong><code>__pydantic_extra__</code></strong></dt>
+<dd>An instance attribute with the values of extra fields from validation when
+<code>model_config['extra'] == 'allow'</code>.</dd>
+<dt><strong><code>__pydantic_fields_set__</code></strong></dt>
+<dd>An instance attribute with the names of fields explicitly specified during validation.</dd>
+<dt><strong><code>__pydantic_private__</code></strong></dt>
+<dd>Instance attribute with the values of private attributes set on the model instance.</dd>
+</dl>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<code>ValidationError</code>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><code>__init__</code> uses <code>__pydantic_self__</code> instead of the more common <code>self</code> for the first arg to
+allow <code>self</code> as a field name.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -433,7 +476,6 @@ class AlertGroup(BaseModel):
 <h3>Ancestors</h3>
 <ul class="hlist">
 <li>pydantic.main.BaseModel</li>
-<li>pydantic.utils.Representation</li>
 </ul>
 <h3>Class variables</h3>
 <dl>
@@ -461,6 +503,14 @@ class AlertGroup(BaseModel):
 <dd>
 <div class="desc"></div>
 </dd>
+<dt id="prometheus_alert_model.main.Alert.model_config"><code class="name">var <span class="ident">model_config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="prometheus_alert_model.main.Alert.model_fields"><code class="name">var <span class="ident">model_fields</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt id="prometheus_alert_model.main.Alert.specific_annotations"><code class="name">var <span class="ident">specific_annotations</span> : Dict[str, str]</code></dt>
 <dd>
 <div class="desc"></div>
@@ -484,8 +534,51 @@ class AlertGroup(BaseModel):
 <span>(</span><span>**data: Any)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p></div>
+<div class="desc"><p>Usage docs: <a href="https://docs.pydantic.dev/2.4/concepts/models/">https://docs.pydantic.dev/2.4/concepts/models/</a></p>
+<p>A base class for creating Pydantic models.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>__class_vars__</code></strong></dt>
+<dd>The names of classvars defined on the model.</dd>
+<dt><strong><code>__private_attributes__</code></strong></dt>
+<dd>Metadata about the private attributes of the model.</dd>
+<dt><strong><code>__signature__</code></strong></dt>
+<dd>The signature for instantiating the model.</dd>
+<dt><strong><code>__pydantic_complete__</code></strong></dt>
+<dd>Whether model building is completed, or if there are still undefined fields.</dd>
+<dt><strong><code>__pydantic_core_schema__</code></strong></dt>
+<dd>The pydantic-core schema used to build the SchemaValidator and SchemaSerializer.</dd>
+<dt><strong><code>__pydantic_custom_init__</code></strong></dt>
+<dd>Whether the model has a custom <code>__init__</code> function.</dd>
+<dt><strong><code>__pydantic_decorators__</code></strong></dt>
+<dd>Metadata containing the decorators defined on the model.
+This replaces <code>Model.__validators__</code> and <code>Model.__root_validators__</code> from Pydantic V1.</dd>
+<dt><strong><code>__pydantic_generic_metadata__</code></strong></dt>
+<dd>Metadata for generic models; contains data used for a similar purpose to
+<strong>args</strong>, <strong>origin</strong>, <strong>parameters</strong> in typing-module generics. May eventually be replaced by these.</dd>
+<dt><strong><code>__pydantic_parent_namespace__</code></strong></dt>
+<dd>Parent namespace of the model, used for automatic rebuilding of models.</dd>
+<dt><strong><code>__pydantic_post_init__</code></strong></dt>
+<dd>The name of the post-init method for the model, if defined.</dd>
+<dt><strong><code>__pydantic_root_model__</code></strong></dt>
+<dd>Whether the model is a <code>RootModel</code>.</dd>
+<dt><strong><code>__pydantic_serializer__</code></strong></dt>
+<dd>The pydantic-core SchemaSerializer used to dump instances of the model.</dd>
+<dt><strong><code>__pydantic_validator__</code></strong></dt>
+<dd>The pydantic-core SchemaValidator used to validate instances of the model.</dd>
+<dt><strong><code>__pydantic_extra__</code></strong></dt>
+<dd>An instance attribute with the values of extra fields from validation when
+<code>model_config['extra'] == 'allow'</code>.</dd>
+<dt><strong><code>__pydantic_fields_set__</code></strong></dt>
+<dd>An instance attribute with the names of fields explicitly specified during validation.</dd>
+<dt><strong><code>__pydantic_private__</code></strong></dt>
+<dd>Instance attribute with the values of private attributes set on the model instance.</dd>
+</dl>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<code>ValidationError</code>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><code>__init__</code> uses <code>__pydantic_self__</code> instead of the more common <code>self</code> for the first arg to
+allow <code>self</code> as a field name.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -795,12 +888,13 @@ class AlertGroup(BaseModel):
                             prefix + alert.__dict__[target][name]
                         )
 
-            self.update_specific_elements(list(targets.keys()))</code></pre>
+            self.update_specific_elements(list(targets.keys()))
+
+    # --------------------------------------------------------------------------</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
 <li>pydantic.main.BaseModel</li>
-<li>pydantic.utils.Representation</li>
 </ul>
 <h3>Class variables</h3>
 <dl>
@@ -829,6 +923,14 @@ class AlertGroup(BaseModel):
 <div class="desc"></div>
 </dd>
 <dt id="prometheus_alert_model.main.AlertGroup.group_labels"><code class="name">var <span class="ident">group_labels</span> : Dict[str, str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="prometheus_alert_model.main.AlertGroup.model_config"><code class="name">var <span class="ident">model_config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="prometheus_alert_model.main.AlertGroup.model_fields"><code class="name">var <span class="ident">model_fields</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -1190,7 +1292,7 @@ compiled to <code>Pattern</code>. Defaults to <code>None</code>.</p></div>
 </details>
 </dd>
 <dt id="prometheus_alert_model.main.AlertGroup.update_common_elements"><code class="name flex">
-<span>def <span class="ident">update_common_elements</span></span>(<span>self, targets: Union[Sequence[Literal['annotations', 'labels']], Literal['annotations', 'labels']] = ['annotations', 'labels']) ‑> NoneType</span>
+<span>def <span class="ident">update_common_elements</span></span>(<span>self, targets: Union[Sequence[typing_extensions.Literal['annotations', 'labels']], typing_extensions.Literal['annotations', 'labels']] = ['annotations', 'labels']) ‑> NoneType</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Updates common annotations and labels.</p>
@@ -1255,7 +1357,7 @@ Targets that should be updated. Defaults to ["annotations", "labels"].</p></div>
 </details>
 </dd>
 <dt id="prometheus_alert_model.main.AlertGroup.update_specific_elements"><code class="name flex">
-<span>def <span class="ident">update_specific_elements</span></span>(<span>self, targets: Union[Sequence[Literal['annotations', 'labels']], Literal['annotations', 'labels']] = ['annotations', 'labels']) ‑> NoneType</span>
+<span>def <span class="ident">update_specific_elements</span></span>(<span>self, targets: Union[Sequence[typing_extensions.Literal['annotations', 'labels']], typing_extensions.Literal['annotations', 'labels']] = ['annotations', 'labels']) ‑> NoneType</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Updates specific labels and annotations.</p></div>
@@ -1328,6 +1430,8 @@ Targets that should be updated. Defaults to ["annotations", "labels"].</p></div>
 <li><code><a title="prometheus_alert_model.main.Alert.fingerprint" href="#prometheus_alert_model.main.Alert.fingerprint">fingerprint</a></code></li>
 <li><code><a title="prometheus_alert_model.main.Alert.generator_url" href="#prometheus_alert_model.main.Alert.generator_url">generator_url</a></code></li>
 <li><code><a title="prometheus_alert_model.main.Alert.labels" href="#prometheus_alert_model.main.Alert.labels">labels</a></code></li>
+<li><code><a title="prometheus_alert_model.main.Alert.model_config" href="#prometheus_alert_model.main.Alert.model_config">model_config</a></code></li>
+<li><code><a title="prometheus_alert_model.main.Alert.model_fields" href="#prometheus_alert_model.main.Alert.model_fields">model_fields</a></code></li>
 <li><code><a title="prometheus_alert_model.main.Alert.specific_annotations" href="#prometheus_alert_model.main.Alert.specific_annotations">specific_annotations</a></code></li>
 <li><code><a title="prometheus_alert_model.main.Alert.specific_labels" href="#prometheus_alert_model.main.Alert.specific_labels">specific_labels</a></code></li>
 <li><code><a title="prometheus_alert_model.main.Alert.starts_at" href="#prometheus_alert_model.main.Alert.starts_at">starts_at</a></code></li>
@@ -1347,6 +1451,8 @@ Targets that should be updated. Defaults to ["annotations", "labels"].</p></div>
 <li><code><a title="prometheus_alert_model.main.AlertGroup.external_url" href="#prometheus_alert_model.main.AlertGroup.external_url">external_url</a></code></li>
 <li><code><a title="prometheus_alert_model.main.AlertGroup.group_key" href="#prometheus_alert_model.main.AlertGroup.group_key">group_key</a></code></li>
 <li><code><a title="prometheus_alert_model.main.AlertGroup.group_labels" href="#prometheus_alert_model.main.AlertGroup.group_labels">group_labels</a></code></li>
+<li><code><a title="prometheus_alert_model.main.AlertGroup.model_config" href="#prometheus_alert_model.main.AlertGroup.model_config">model_config</a></code></li>
+<li><code><a title="prometheus_alert_model.main.AlertGroup.model_fields" href="#prometheus_alert_model.main.AlertGroup.model_fields">model_fields</a></code></li>
 <li><code><a title="prometheus_alert_model.main.AlertGroup.override" href="#prometheus_alert_model.main.AlertGroup.override">override</a></code></li>
 <li><code><a title="prometheus_alert_model.main.AlertGroup.receiver" href="#prometheus_alert_model.main.AlertGroup.receiver">receiver</a></code></li>
 <li><code><a title="prometheus_alert_model.main.AlertGroup.remove" href="#prometheus_alert_model.main.AlertGroup.remove">remove</a></code></li>
