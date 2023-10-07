@@ -7,6 +7,9 @@ license = "Apache-2.0"
 readme = "README.md"
 repository = "https://github.com/trallnag/prometheus-alert-model-for-python"
 keywords = ["prometheus", "alertmanager", "alerting", "pydantic"]
+packages = [
+    { include = "prometheus_alert_model" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
