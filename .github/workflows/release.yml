@@ -9,11 +9,10 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
-
+    permissions:
+      # IMPORTANT: this permission is mandatory for trusted publishing
+      id-token: write
     steps:
-
-    # ==========================================================================
-
     - uses: actions/checkout@v2
 
     - uses: actions/setup-python@v2
@@ -25,11 +24,5 @@ jobs:
     - run: bash run.sh test
     - run: bash run.sh lint
     - run: poetry build
-    - name: Publish package
-      uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
-      with:
-        user: __token__
-        password: ${{ secrets.PYPI_API_TOKEN }}
-
-
-    # ==========================================================================
+    - name: Publish package distributions to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
